@@ -1,0 +1,9 @@
+README
+setup.py
+pynini_rewrite/__init__.py
+pynini_rewrite/rewrite.py
+pynini_rewrite/rule_cascade.py
+pynini_rewrite.egg-info/PKG-INFO
+pynini_rewrite.egg-info/SOURCES.txt
+pynini_rewrite.egg-info/dependency_links.txt
+pynini_rewrite.egg-info/top_level.txt
