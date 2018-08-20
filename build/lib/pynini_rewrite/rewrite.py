@@ -170,7 +170,7 @@ def lattice_to_strings(lattice, token_type="byte"):
   return tuple(lattice.paths(token_type).ostrings())
   
   
-def lattice_to_strings_and_weights(lattice, input_token_type="byte", output_token_type="byte"):
+def lattice_to_strings_and_weights(lattice, token_type="byte"):
     """Returns list of tuples of input strings, output strings and weights, sorted by weight.
     
     Args:

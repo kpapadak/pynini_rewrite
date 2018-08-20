@@ -1,4 +1,5 @@
 README
+setup.cfg
 setup.py
 pynini_rewrite/__init__.py
 pynini_rewrite/rewrite.py
