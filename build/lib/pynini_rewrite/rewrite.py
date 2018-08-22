@@ -19,7 +19,7 @@ class Error(Exception):
   pass
 
 
-def _check_nonempty_and_cleanup(lattice):
+def check_nonempty_and_cleanup(lattice):
   """Checks wellformedness of lattice and cleans up.
 
   Args:
@@ -170,17 +170,18 @@ def lattice_to_strings(lattice, token_type="byte"):
   return tuple(lattice.paths(token_type).ostrings())
   
   
-def lattice_to_strings_and_weights(lattice, token_type="byte"):
-    """Returns list of tuples of input strings, output strings and weights, sorted by weight.
+def lattice_to_strings_and_weights(lattice, input_token_type="byte", output_token_type="byte"):
+    """Returns list of tuples of ARPA phones, sorted by weight.
     
     Args:
     lattice: Epsilon-free acyclic WFSA.
     token_type: Output token type, or symbol table.
     
     Returns:
-    A tuple of output strings, sorted by lowest to highest weight.
+    A list of tuples of output ARPA phones, sorted by lowest to highest weight.
     """
-    return sorted(lattice.paths(output_token_type=SYMS), key=lambda path: float(path[2]))
+    sorted_arpa = sorted(lattice.paths(output_token_type=output_token_type), key=lambda path: float(path[2]))
+    return [tuple(y.split()) for (x,y,z) in sorted_arpa]
 
 
 def top_rewrite(string, rule, token_type="byte"):
