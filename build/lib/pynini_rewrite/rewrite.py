@@ -19,7 +19,7 @@ class Error(Exception):
   pass
 
 
-def check_nonempty_and_cleanup(lattice):
+def _check_nonempty_and_cleanup(lattice):
   """Checks wellformedness of lattice and cleans up.
 
   Args:
@@ -180,6 +180,7 @@ def lattice_to_strings_and_weights(lattice, input_token_type="byte", output_toke
     Returns:
     A list of tuples of output ARPA phones, sorted by lowest to highest weight.
     """
+    lattice = _check_nonempty_and_cleanup(lattice)
     sorted_arpa = sorted(lattice.paths(output_token_type=output_token_type), key=lambda path: float(path[2]))
     return [tuple(y.split()) for (x,y,z) in sorted_arpa]
 
